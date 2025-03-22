@@ -10,6 +10,7 @@ Install `natsort` with:
 
 ```sh
 pip install natsort
+```
 
 ## Usage
 
