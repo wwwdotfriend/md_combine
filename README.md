@@ -16,4 +16,4 @@ pip install natsort
 
 ## Usage
 
-Run with `python md_combine.py` and input the folder containing your markdown files. It'll output the .txt file next to the script.
+Run `md_combine.py` and input the filepath containing your markdown files. It'll output the .txt file next to the script.
