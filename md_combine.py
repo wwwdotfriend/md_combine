@@ -2,13 +2,19 @@ import os
 import glob
 from natsort import natsorted
 
-md_directory = input("Enter the full path to the folder containing the markdown files: ").strip()
+md_directory = input(
+    "Enter the full path to the folder containing the markdown files: "
+).strip()
 
 if not os.path.isdir(md_directory):
-    print("Error: The specified directory does not exist. Please check the path and try again.")
+    print(
+        "Error: The specified directory does not exist. Please check the path and try again."
+    )
     exit()
 
-output_file = "combined_logs.txt"
+output_name = input("Enter the output filename (without extension): ").strip()
+output_file = f"{output_name}.txt"
+
 
 def combine_markdown_files(md_directory, output_file):
     md_files = glob.glob(os.path.join(md_directory, "*.md"))
@@ -22,9 +28,10 @@ def combine_markdown_files(md_directory, output_file):
     with open(output_file, "w", encoding="utf-8") as outfile:
         for md_file in md_files:
             with open(md_file, "r", encoding="utf-8") as infile:
-                outfile.write(f"--- {os.path.basename(md_file)} ---\n") 
-                outfile.write(infile.read() + "\n\n") 
+                outfile.write(f"--- {os.path.basename(md_file)} ---\n")
+                outfile.write(infile.read() + "\n\n")
 
     print(f"Combined {len(md_files)} files into {output_file}")
+
 
 combine_markdown_files(md_directory, output_file)
